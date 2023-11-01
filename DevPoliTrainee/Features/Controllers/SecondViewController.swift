@@ -17,7 +17,7 @@ class SecondViewController: UIViewController {
 
     @IBOutlet weak var nameTextField: UITextField!
     
-    var delegate: DataSecondViewDelegate?
+    weak var delegate: DataSecondViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class SecondViewController: UIViewController {
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
-        delegate?.sendData(data: nameTextField.text!)
+        guard delegate?.sendData(data: nameTextField.text!) != nil else { return }
     }
     
     
